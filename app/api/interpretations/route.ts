@@ -50,7 +50,7 @@ export async function POST(req: Request) {
             message: "Interpretation created",
             data: response,
         });
-    } catch (error) {
+    } catch (_error) {
         return NextResponse.json(
             { error: "Failed to create interpretation" },
             { status: 500 }
@@ -62,7 +62,7 @@ export async function GET() {
     try {
         const interpretations = await fetchInterpretation();
         return NextResponse.json(interpretations);
-    } catch (error) {
+    } catch (_error) {
         return NextResponse.json(
             { error: "Failed to fetch interpretations" },
             { status: 500 }

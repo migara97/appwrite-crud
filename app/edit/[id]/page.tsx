@@ -21,12 +21,13 @@ export default function EditPage({params} : {params: {id:string}}) {
                 console.log(data);
                 setFormData({ term: data.interpretation.term, interpretation: data.interpretation.interpretation });
             } catch (error) {
+                console.log(error);
                 setError("Failed to load interpretation.");
             }
         }
 
         fetchData();
-    }, []);
+    }, [params.id]); // Add params.id to the dependency array
 
     const handleInputChange = (
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -101,5 +102,4 @@ export default function EditPage({params} : {params: {id:string}}) {
             {error && <p className="text-red-500 mt-5">{error}</p>}
         </div>
     );
-    
 }
